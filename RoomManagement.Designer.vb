@@ -1,274 +1,287 @@
-﻿Imports System.Data.OleDb
+﻿Partial Class RoomManagement
+    Inherits System.Windows.Forms.Form
 
-Public Class RoomManagement
-
-    Private selectedRoomID As Integer = -1
-
-    ' ============================================================
-    '  FORM LOAD
-    ' ============================================================
-    Private Sub RoomManagement_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadRooms()
-    End Sub
-
-    ' ============================================================
-    '  LOAD ALL ROOMS INTO GRID
-    ' ============================================================
-    Private Sub LoadRooms(Optional filter As String = "")
+    <System.Diagnostics.DebuggerNonUserCode()>
+    Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
-            Using conn As New OleDbConnection(connStr)
-                conn.Open()
-
-                Dim query As String =
-                    "SELECT RoomID, RoomNumber, RoomType, Price, Status, Description " &
-                    "FROM tbl_Rooms"
-
-                If filter <> "" Then
-                    query &= " WHERE RoomNumber LIKE '%" & filter & "%'" &
-                             " OR RoomType LIKE '%" & filter & "%'" &
-                             " OR Status LIKE '%" & filter & "%'"
-                End If
-
-                query &= " ORDER BY RoomNumber"
-
-                Dim da As New OleDbDataAdapter(query, conn)
-                Dim dt As New DataTable()
-                da.Fill(dt)
-
-                dgvRooms.DataSource = dt
-
-                ' Hide RoomID column
-                If dgvRooms.Columns.Contains("RoomID") Then
-                    dgvRooms.Columns("RoomID").Visible = False
-                End If
-
-                ' Rename column headers
-                If dgvRooms.Columns.Contains("RoomNumber") Then dgvRooms.Columns("RoomNumber").HeaderText = "Room No."
-                If dgvRooms.Columns.Contains("RoomType") Then dgvRooms.Columns("RoomType").HeaderText = "Type"
-                If dgvRooms.Columns.Contains("Price") Then dgvRooms.Columns("Price").HeaderText = "Price/Night"
-                If dgvRooms.Columns.Contains("Status") Then dgvRooms.Columns("Status").HeaderText = "Status"
-                If dgvRooms.Columns.Contains("Description") Then dgvRooms.Columns("Description").HeaderText = "Description"
-
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error loading rooms: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            If disposing AndAlso components IsNot Nothing Then
+                components.Dispose()
+            End If
+        Finally
+            MyBase.Dispose(disposing)
         End Try
     End Sub
 
-    ' ============================================================
-    '  ADD ROOM
-    ' ============================================================
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not ValidateInputs() Then Return
+    Private components As System.ComponentModel.IContainer
 
-        Try
-            Using conn As New OleDbConnection(connStr)
-                conn.Open()
+    <System.Diagnostics.DebuggerStepThrough()>
+    Private Sub InitializeComponent()
+        Me.lblTitle = New System.Windows.Forms.Label()
+        Me.pnlForm = New System.Windows.Forms.Panel()
+        Me.lblRoomNumber = New System.Windows.Forms.Label()
+        Me.txtRoomNumber = New System.Windows.Forms.TextBox()
+        Me.lblRoomType = New System.Windows.Forms.Label()
+        Me.cmbRoomType = New System.Windows.Forms.ComboBox()
+        Me.lblPrice = New System.Windows.Forms.Label()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
+        Me.lblStatus = New System.Windows.Forms.Label()
+        Me.cmbStatus = New System.Windows.Forms.ComboBox()
+        Me.lblDescription = New System.Windows.Forms.Label()
+        Me.txtDescription = New System.Windows.Forms.TextBox()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.pnlGrid = New System.Windows.Forms.Panel()
+        Me.lblSearch = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.dgvRooms = New System.Windows.Forms.DataGridView()
+        Me.pnlForm.SuspendLayout()
+        Me.pnlGrid.SuspendLayout()
+        CType(Me.dgvRooms, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
 
-                ' Check duplicate room number
-                Dim checkCmd As New OleDbCommand(
-                    "SELECT COUNT(*) FROM tbl_Rooms WHERE RoomNumber = @num", conn)
-                checkCmd.Parameters.AddWithValue("@num", txtRoomNumber.Text.Trim())
-                If CInt(checkCmd.ExecuteScalar()) > 0 Then
-                    MessageBox.Show("Room number already exists.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                    Return
-                End If
+        '=== FORM ===
+        Me.ClientSize = New System.Drawing.Size(1060, 620)
+        Me.BackColor = System.Drawing.Color.White
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Name = "RoomManagement"
+        Me.Text = "Room Management"
+        Me.Font = New System.Drawing.Font("Segoe UI", 9.5!)
 
-                Dim cmd As New OleDbCommand(
-                    "INSERT INTO tbl_Rooms (RoomNumber, RoomType, Price, Status, Description) " &
-                    "VALUES (@num, @type, @price, @status, @desc)", conn)
-                cmd.Parameters.AddWithValue("@num", txtRoomNumber.Text.Trim())
-                cmd.Parameters.AddWithValue("@type", cmbRoomType.SelectedItem.ToString())
-                cmd.Parameters.AddWithValue("@price", CDec(txtPrice.Text.Trim()))
-                cmd.Parameters.AddWithValue("@status", cmbStatus.SelectedItem.ToString())
-                cmd.Parameters.AddWithValue("@desc", txtDescription.Text.Trim())
+        '=== LABEL: Title ===
+        Me.lblTitle.AutoSize = False
+        Me.lblTitle.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTitle.ForeColor = System.Drawing.Color.FromArgb(40, 40, 40)
+        Me.lblTitle.Location = New System.Drawing.Point(20, 15)
+        Me.lblTitle.Size = New System.Drawing.Size(300, 35)
+        Me.lblTitle.Text = "Room Management"
+        Me.lblTitle.Name = "lblTitle"
 
-                cmd.ExecuteNonQuery()
-                MessageBox.Show("Room added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                ClearFields()
-                LoadRooms()
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error adding room: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+        '=== PANEL: FORM (left side) ===
+        Me.pnlForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnlForm.Location = New System.Drawing.Point(20, 60)
+        Me.pnlForm.Name = "pnlForm"
+        Me.pnlForm.Size = New System.Drawing.Size(320, 540)
+        Me.pnlForm.BackColor = System.Drawing.Color.FromArgb(248, 248, 248)
+        Me.pnlForm.Controls.Add(Me.lblRoomNumber)
+        Me.pnlForm.Controls.Add(Me.txtRoomNumber)
+        Me.pnlForm.Controls.Add(Me.lblRoomType)
+        Me.pnlForm.Controls.Add(Me.cmbRoomType)
+        Me.pnlForm.Controls.Add(Me.lblPrice)
+        Me.pnlForm.Controls.Add(Me.txtPrice)
+        Me.pnlForm.Controls.Add(Me.lblStatus)
+        Me.pnlForm.Controls.Add(Me.cmbStatus)
+        Me.pnlForm.Controls.Add(Me.lblDescription)
+        Me.pnlForm.Controls.Add(Me.txtDescription)
+        Me.pnlForm.Controls.Add(Me.btnAdd)
+        Me.pnlForm.Controls.Add(Me.btnUpdate)
+        Me.pnlForm.Controls.Add(Me.btnDelete)
+        Me.pnlForm.Controls.Add(Me.btnClear)
+
+        '=== LABEL: Room Number ===
+        Me.lblRoomNumber.AutoSize = True
+        Me.lblRoomNumber.Location = New System.Drawing.Point(15, 20)
+        Me.lblRoomNumber.Name = "lblRoomNumber"
+        Me.lblRoomNumber.Text = "Room Number"
+
+        '=== TEXTBOX: Room Number ===
+        Me.txtRoomNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtRoomNumber.Location = New System.Drawing.Point(15, 40)
+        Me.txtRoomNumber.Name = "txtRoomNumber"
+        Me.txtRoomNumber.Size = New System.Drawing.Size(285, 25)
+
+        '=== LABEL: Room Type ===
+        Me.lblRoomType.AutoSize = True
+        Me.lblRoomType.Location = New System.Drawing.Point(15, 80)
+        Me.lblRoomType.Name = "lblRoomType"
+        Me.lblRoomType.Text = "Room Type"
+
+        '=== COMBOBOX: Room Type ===
+        Me.cmbRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbRoomType.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbRoomType.Location = New System.Drawing.Point(15, 100)
+        Me.cmbRoomType.Name = "cmbRoomType"
+        Me.cmbRoomType.Size = New System.Drawing.Size(285, 25)
+        Me.cmbRoomType.Items.AddRange(New Object() {"Single", "Double", "Suite", "Deluxe", "Family"})
+
+        '=== LABEL: Price ===
+        Me.lblPrice.AutoSize = True
+        Me.lblPrice.Location = New System.Drawing.Point(15, 140)
+        Me.lblPrice.Name = "lblPrice"
+        Me.lblPrice.Text = "Price per Night"
+
+        '=== TEXTBOX: Price ===
+        Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPrice.Location = New System.Drawing.Point(15, 160)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(285, 25)
+
+        '=== LABEL: Status ===
+        Me.lblStatus.AutoSize = True
+        Me.lblStatus.Location = New System.Drawing.Point(15, 200)
+        Me.lblStatus.Name = "lblStatus"
+        Me.lblStatus.Text = "Status"
+
+        '=== COMBOBOX: Status ===
+        Me.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbStatus.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmbStatus.Location = New System.Drawing.Point(15, 220)
+        Me.cmbStatus.Name = "cmbStatus"
+        Me.cmbStatus.Size = New System.Drawing.Size(285, 25)
+        Me.cmbStatus.Items.AddRange(New Object() {"Available", "Reserved", "Occupied", "Maintenance"})
+
+        '=== LABEL: Description ===
+        Me.lblDescription.AutoSize = True
+        Me.lblDescription.Location = New System.Drawing.Point(15, 260)
+        Me.lblDescription.Name = "lblDescription"
+        Me.lblDescription.Text = "Description"
+
+        '=== TEXTBOX: Description ===
+        Me.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDescription.Location = New System.Drawing.Point(15, 280)
+        Me.txtDescription.Multiline = True
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.Size = New System.Drawing.Size(285, 80)
+        Me.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+
+        '=== BUTTON: Add ===
+        Me.btnAdd.BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
+        Me.btnAdd.FlatAppearance.BorderSize = 0
+        Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAdd.ForeColor = System.Drawing.Color.White
+        Me.btnAdd.Font = New System.Drawing.Font("Segoe UI", 9.5!, System.Drawing.FontStyle.Bold)
+        Me.btnAdd.Location = New System.Drawing.Point(15, 380)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(130, 35)
+        Me.btnAdd.Text = "Add Room"
+        Me.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand
+
+        '=== BUTTON: Update ===
+        Me.btnUpdate.BackColor = System.Drawing.Color.FromArgb(40, 167, 69)
+        Me.btnUpdate.FlatAppearance.BorderSize = 0
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnUpdate.ForeColor = System.Drawing.Color.White
+        Me.btnUpdate.Font = New System.Drawing.Font("Segoe UI", 9.5!, System.Drawing.FontStyle.Bold)
+        Me.btnUpdate.Location = New System.Drawing.Point(170, 380)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(130, 35)
+        Me.btnUpdate.Text = "Update Room"
+        Me.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
+
+        '=== BUTTON: Delete ===
+        Me.btnDelete.BackColor = System.Drawing.Color.FromArgb(200, 35, 51)
+        Me.btnDelete.FlatAppearance.BorderSize = 0
+        Me.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDelete.ForeColor = System.Drawing.Color.White
+        Me.btnDelete.Font = New System.Drawing.Font("Segoe UI", 9.5!, System.Drawing.FontStyle.Bold)
+        Me.btnDelete.Location = New System.Drawing.Point(15, 430)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(130, 35)
+        Me.btnDelete.Text = "Delete Room"
+        Me.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand
+
+        '=== BUTTON: Clear ===
+        Me.btnClear.BackColor = System.Drawing.Color.FromArgb(108, 117, 125)
+        Me.btnClear.FlatAppearance.BorderSize = 0
+        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClear.ForeColor = System.Drawing.Color.White
+        Me.btnClear.Font = New System.Drawing.Font("Segoe UI", 9.5!, System.Drawing.FontStyle.Bold)
+        Me.btnClear.Location = New System.Drawing.Point(170, 430)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(130, 35)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
+
+        '=== PANEL: GRID (right side) ===
+        Me.pnlGrid.Location = New System.Drawing.Point(360, 60)
+        Me.pnlGrid.Name = "pnlGrid"
+        Me.pnlGrid.Size = New System.Drawing.Size(680, 540)
+        Me.pnlGrid.Controls.Add(Me.lblSearch)
+        Me.pnlGrid.Controls.Add(Me.txtSearch)
+        Me.pnlGrid.Controls.Add(Me.btnSearch)
+        Me.pnlGrid.Controls.Add(Me.dgvRooms)
+
+        '=== LABEL: Search ===
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Location = New System.Drawing.Point(0, 5)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Text = "Search:"
+
+        '=== TEXTBOX: Search ===
+        Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSearch.Location = New System.Drawing.Point(55, 2)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(480, 25)
+
+        '=== BUTTON: Search ===
+        Me.btnSearch.BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
+        Me.btnSearch.FlatAppearance.BorderSize = 0
+        Me.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSearch.ForeColor = System.Drawing.Color.White
+        Me.btnSearch.Font = New System.Drawing.Font("Segoe UI", 9.5!)
+        Me.btnSearch.Location = New System.Drawing.Point(545, 1)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(80, 27)
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+
+        '=== DATAGRIDVIEW: Rooms ===
+        Me.dgvRooms.AllowUserToAddRows = False
+        Me.dgvRooms.AllowUserToDeleteRows = False
+        Me.dgvRooms.ReadOnly = True
+        Me.dgvRooms.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvRooms.MultiSelect = False
+        Me.dgvRooms.BackgroundColor = System.Drawing.Color.White
+        Me.dgvRooms.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.dgvRooms.RowHeadersVisible = False
+        Me.dgvRooms.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvRooms.Location = New System.Drawing.Point(0, 35)
+        Me.dgvRooms.Name = "dgvRooms"
+        Me.dgvRooms.Size = New System.Drawing.Size(678, 500)
+        Me.dgvRooms.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
+        Me.dgvRooms.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White
+        Me.dgvRooms.ColumnHeadersDefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 9.5!, System.Drawing.FontStyle.Bold)
+        Me.dgvRooms.ColumnHeadersHeight = 35
+        Me.dgvRooms.EnableHeadersVisualStyles = False
+        Me.dgvRooms.Font = New System.Drawing.Font("Segoe UI", 9.5!)
+        Me.dgvRooms.RowTemplate.Height = 30
+
+        '=== ADD CONTROLS TO FORM ===
+        Me.Controls.Add(Me.lblTitle)
+        Me.Controls.Add(Me.pnlForm)
+        Me.Controls.Add(Me.pnlGrid)
+
+        Me.pnlForm.ResumeLayout(False)
+        Me.pnlForm.PerformLayout()
+        Me.pnlGrid.ResumeLayout(False)
+        Me.pnlGrid.PerformLayout()
+        CType(Me.dgvRooms, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+
     End Sub
 
-    ' ============================================================
-    '  UPDATE ROOM
-    ' ============================================================
-    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
-        If selectedRoomID = -1 Then
-            MessageBox.Show("Please select a room from the list to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-
-        If Not ValidateInputs() Then Return
-
-        Try
-            Using conn As New OleDbConnection(connStr)
-                conn.Open()
-
-                Dim cmd As New OleDbCommand(
-                    "UPDATE tbl_Rooms SET RoomNumber=@num, RoomType=@type, Price=@price, " &
-                    "Status=@status, Description=@desc WHERE RoomID=@id", conn)
-                cmd.Parameters.AddWithValue("@num", txtRoomNumber.Text.Trim())
-                cmd.Parameters.AddWithValue("@type", cmbRoomType.SelectedItem.ToString())
-                cmd.Parameters.AddWithValue("@price", CDec(txtPrice.Text.Trim()))
-                cmd.Parameters.AddWithValue("@status", cmbStatus.SelectedItem.ToString())
-                cmd.Parameters.AddWithValue("@desc", txtDescription.Text.Trim())
-                cmd.Parameters.AddWithValue("@id", selectedRoomID)
-
-                cmd.ExecuteNonQuery()
-                MessageBox.Show("Room updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                ClearFields()
-                LoadRooms()
-            End Using
-        Catch ex As Exception
-            MessageBox.Show("Error updating room: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
-
-    ' ============================================================
-    '  DELETE ROOM
-    ' ============================================================
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        If selectedRoomID = -1 Then
-            MessageBox.Show("Please select a room from the list to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-
-        Dim confirm As DialogResult = MessageBox.Show(
-            "Are you sure you want to delete this room?",
-            "Confirm Delete",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question)
-
-        If confirm = DialogResult.Yes Then
-            Try
-                Using conn As New OleDbConnection(connStr)
-                    conn.Open()
-
-                    Dim cmd As New OleDbCommand(
-                        "DELETE FROM tbl_Rooms WHERE RoomID = @id", conn)
-                    cmd.Parameters.AddWithValue("@id", selectedRoomID)
-                    cmd.ExecuteNonQuery()
-
-                    MessageBox.Show("Room deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    ClearFields()
-                    LoadRooms()
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error deleting room: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End If
-    End Sub
-
-    ' ============================================================
-    '  CLEAR BUTTON
-    ' ============================================================
-    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        ClearFields()
-    End Sub
-
-    ' ============================================================
-    '  SEARCH
-    ' ============================================================
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        LoadRooms(txtSearch.Text.Trim())
-    End Sub
-
-    Private Sub txtSearch_KeyDown(sender As Object, e As KeyEventArgs) Handles txtSearch.KeyDown
-        If e.KeyCode = Keys.Enter Then LoadRooms(txtSearch.Text.Trim())
-    End Sub
-
-    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
-        If txtSearch.Text.Trim() = "" Then LoadRooms()
-    End Sub
-
-    ' ============================================================
-    '  DATAGRIDVIEW ROW CLICK — Populate form fields
-    ' ============================================================
-    Private Sub dgvRooms_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvRooms.CellClick
-        If e.RowIndex < 0 Then Return
-
-        Dim row As DataGridViewRow = dgvRooms.Rows(e.RowIndex)
-
-        selectedRoomID = CInt(row.Cells("RoomID").Value)
-        txtRoomNumber.Text = row.Cells("RoomNumber").Value.ToString()
-        cmbRoomType.SelectedItem = row.Cells("RoomType").Value.ToString()
-        txtPrice.Text = row.Cells("Price").Value.ToString()
-        cmbStatus.SelectedItem = row.Cells("Status").Value.ToString()
-        txtDescription.Text = row.Cells("Description").Value.ToString()
-    End Sub
-
-    ' ============================================================
-    '  COLOR CODE STATUS ROWS
-    ' ============================================================
-    Private Sub dgvRooms_RowPrePaint(sender As Object, e As DataGridViewRowPrePaintEventArgs) Handles dgvRooms.RowPrePaint
-        If e.RowIndex < 0 Then Return
-
-        Dim status As String = dgvRooms.Rows(e.RowIndex).Cells("Status").Value?.ToString()
-
-        Select Case status
-            Case "Available"
-                dgvRooms.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(220, 255, 220)
-            Case "Occupied"
-                dgvRooms.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(255, 220, 220)
-            Case "Maintenance"
-                dgvRooms.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(255, 245, 200)
-        End Select
-    End Sub
-
-    ' ============================================================
-    '  VALIDATE INPUTS
-    ' ============================================================
-    Private Function ValidateInputs() As Boolean
-        If String.IsNullOrWhiteSpace(txtRoomNumber.Text) Then
-            MessageBox.Show("Please enter a room number.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtRoomNumber.Focus()
-            Return False
-        End If
-
-        If cmbRoomType.SelectedIndex = -1 Then
-            MessageBox.Show("Please select a room type.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            cmbRoomType.Focus()
-            Return False
-        End If
-
-        If String.IsNullOrWhiteSpace(txtPrice.Text) Then
-            MessageBox.Show("Please enter a price.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtPrice.Focus()
-            Return False
-        End If
-
-        Dim price As Decimal
-        If Not Decimal.TryParse(txtPrice.Text.Trim(), price) OrElse price <= 0 Then
-            MessageBox.Show("Please enter a valid price.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            txtPrice.Focus()
-            Return False
-        End If
-
-        If cmbStatus.SelectedIndex = -1 Then
-            MessageBox.Show("Please select a status.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            cmbStatus.Focus()
-            Return False
-        End If
-
-        Return True
-    End Function
-
-    ' ============================================================
-    '  CLEAR FIELDS
-    ' ============================================================
-    Private Sub ClearFields()
-        selectedRoomID = -1
-        txtRoomNumber.Clear()
-        cmbRoomType.SelectedIndex = -1
-        txtPrice.Clear()
-        cmbStatus.SelectedIndex = -1
-        txtDescription.Clear()
-        dgvRooms.ClearSelection()
-        txtRoomNumber.Focus()
-    End Sub
+    Friend WithEvents lblTitle As System.Windows.Forms.Label
+    Friend WithEvents pnlForm As System.Windows.Forms.Panel
+    Friend WithEvents lblRoomNumber As System.Windows.Forms.Label
+    Friend WithEvents txtRoomNumber As System.Windows.Forms.TextBox
+    Friend WithEvents lblRoomType As System.Windows.Forms.Label
+    Friend WithEvents cmbRoomType As System.Windows.Forms.ComboBox
+    Friend WithEvents lblPrice As System.Windows.Forms.Label
+    Friend WithEvents txtPrice As System.Windows.Forms.TextBox
+    Friend WithEvents lblStatus As System.Windows.Forms.Label
+    Friend WithEvents cmbStatus As System.Windows.Forms.ComboBox
+    Friend WithEvents lblDescription As System.Windows.Forms.Label
+    Friend WithEvents txtDescription As System.Windows.Forms.TextBox
+    Friend WithEvents btnAdd As System.Windows.Forms.Button
+    Friend WithEvents btnUpdate As System.Windows.Forms.Button
+    Friend WithEvents btnDelete As System.Windows.Forms.Button
+    Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents pnlGrid As System.Windows.Forms.Panel
+    Friend WithEvents lblSearch As System.Windows.Forms.Label
+    Friend WithEvents txtSearch As System.Windows.Forms.TextBox
+    Friend WithEvents btnSearch As System.Windows.Forms.Button
+    Friend WithEvents dgvRooms As System.Windows.Forms.DataGridView
 
 End Class

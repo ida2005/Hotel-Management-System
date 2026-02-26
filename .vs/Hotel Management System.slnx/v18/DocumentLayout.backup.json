@@ -1,0 +1,417 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\mdiparent1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:mdiparent1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\userform.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:userform.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\mdiparent1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:mdiparent1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\dashboard.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:dashboard.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\checkincheckout.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:checkincheckout.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\userform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:userform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\checkincheckout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:checkincheckout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\bookingform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:bookingform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\dbmd.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:dbmd.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\roommanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:roommanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\login.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:login.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\guestviewform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:guestviewform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\guestmanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:guestmanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:dashboard.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\mdiparent1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:mdiparent1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\roommanagement.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:roommanagement.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\roommanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:roommanagement.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\bookingform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:bookingform.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|c:\\users\\john\\source\\repos\\hotel-management-system\\checkincheckout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:checkincheckout.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\login.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:login.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\guestviewform.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:guestviewform.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|C:\\Users\\john\\source\\repos\\Hotel-Management-System\\guestmanagement.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{36CCB491-D253-4E8C-A0D4-8B95479D82FC}|Hotel Management System.vbproj|solutionrelative:guestmanagement.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 23,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "dbmd.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\dbmd.vb",
+              "RelativeDocumentMoniker": "dbmd.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\dbmd.vb",
+              "RelativeToolTip": "dbmd.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:27.036Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.Designer.vb",
+              "RelativeDocumentMoniker": "Dashboard.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.Designer.vb",
+              "RelativeToolTip": "Dashboard.Designer.vb",
+              "ViewState": "AgIAAEwBAAAAAAAAAAAcwF0BAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T04:37:53.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Dashboard.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.vb",
+              "RelativeDocumentMoniker": "Dashboard.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.vb",
+              "RelativeToolTip": "Dashboard.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T04:37:49.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dashboard.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.vb",
+              "RelativeDocumentMoniker": "Dashboard.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Dashboard.vb [Design]",
+              "RelativeToolTip": "Dashboard.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T04:37:46.802Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MDIParent1.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.vb",
+              "RelativeDocumentMoniker": "MDIParent1.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.vb [Design]",
+              "RelativeToolTip": "MDIParent1.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T04:36:48.084Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RoomManagement.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.vb",
+              "RelativeDocumentMoniker": "RoomManagement.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.vb [Design]",
+              "RelativeToolTip": "RoomManagement.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T04:12:14.988Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BookingForm.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\BookingForm.vb",
+              "RelativeDocumentMoniker": "BookingForm.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\BookingForm.vb [Design]",
+              "RelativeToolTip": "BookingForm.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T03:40:57.718Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CheckInCheckOut.vb [Design]",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.vb",
+              "RelativeDocumentMoniker": "CheckInCheckOut.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.vb [Design]",
+              "RelativeToolTip": "CheckInCheckOut.vb [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-26T03:05:03.941Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CheckInCheckOut.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.Designer.vb",
+              "RelativeDocumentMoniker": "CheckInCheckOut.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.Designer.vb",
+              "RelativeToolTip": "CheckInCheckOut.Designer.vb",
+              "ViewState": "AgIAAFABAAAAAAAAAAAIwHABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:44:08.183Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MDIParent1.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.Designer.vb",
+              "RelativeDocumentMoniker": "MDIParent1.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.Designer.vb",
+              "RelativeToolTip": "MDIParent1.Designer.vb",
+              "ViewState": "AgIAANIAAAAAAAAAAAAcwPEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:44:06.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GuestManagement.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestManagement.Designer.vb",
+              "RelativeDocumentMoniker": "GuestManagement.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestManagement.Designer.vb",
+              "RelativeToolTip": "GuestManagement.Designer.vb",
+              "ViewState": "AgIAACABAAAAAAAAAAAIwEABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:44:02.688Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GuestViewForm.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestViewForm.Designer.vb",
+              "RelativeDocumentMoniker": "GuestViewForm.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestViewForm.Designer.vb",
+              "RelativeToolTip": "GuestViewForm.Designer.vb",
+              "ViewState": "AgIAAFsBAAAAAAAAAAAIwHsBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:44:01.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Login.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Login.Designer.vb",
+              "RelativeDocumentMoniker": "Login.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Login.Designer.vb",
+              "RelativeToolTip": "Login.Designer.vb",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAIwKIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:44:00.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RoomManagement.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.Designer.vb",
+              "RelativeDocumentMoniker": "RoomManagement.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.Designer.vb",
+              "RelativeToolTip": "RoomManagement.Designer.vb",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAowIUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:43:59.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserForm.Designer.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\UserForm.Designer.vb",
+              "RelativeDocumentMoniker": "UserForm.Designer.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\UserForm.Designer.vb",
+              "RelativeToolTip": "UserForm.Designer.vb",
+              "ViewState": "AgIAAAoBAAAAAAAAAAAcwBQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:43:56.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserForm.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\UserForm.vb",
+              "RelativeDocumentMoniker": "UserForm.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\UserForm.vb",
+              "RelativeToolTip": "UserForm.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALAAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:33.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RoomManagement.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.vb",
+              "RelativeDocumentMoniker": "RoomManagement.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\RoomManagement.vb",
+              "RelativeToolTip": "RoomManagement.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:32.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Login.vb",
+              "RelativeDocumentMoniker": "Login.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\Login.vb",
+              "RelativeToolTip": "Login.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:30.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GuestViewForm.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestViewForm.vb",
+              "RelativeDocumentMoniker": "GuestViewForm.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestViewForm.vb",
+              "RelativeToolTip": "GuestViewForm.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:29.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "GuestManagement.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestManagement.vb",
+              "RelativeDocumentMoniker": "GuestManagement.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\GuestManagement.vb",
+              "RelativeToolTip": "GuestManagement.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:28.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MDIParent1.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.vb",
+              "RelativeDocumentMoniker": "MDIParent1.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\MDIParent1.vb",
+              "RelativeToolTip": "MDIParent1.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:25.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CheckInCheckOut.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.vb",
+              "RelativeDocumentMoniker": "CheckInCheckOut.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\CheckInCheckOut.vb",
+              "RelativeToolTip": "CheckInCheckOut.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:23.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookingForm.vb",
+              "DocumentMoniker": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\BookingForm.vb",
+              "RelativeDocumentMoniker": "BookingForm.vb",
+              "ToolTip": "C:\\Users\\john\\source\\repos\\Hotel-Management-System\\BookingForm.vb",
+              "RelativeToolTip": "BookingForm.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-02-25T17:42:21.614Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

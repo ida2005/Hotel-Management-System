@@ -1,36 +1,33 @@
-﻿Imports System.Data.OleDb
+﻿Imports System.Data.SqlClient
 
 Public Class UserForm
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 
     Private selectedUserID As Integer = -1
 
-    ' ============================================================
-    '  FORM LOAD
-    ' ============================================================
     Private Sub UserForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadUsers()
     End Sub
 
-    ' ============================================================
-    '  LOAD ALL USERS INTO GRID
-    ' ============================================================
     Private Sub LoadUsers(Optional filter As String = "")
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
                 Dim query As String =
-                    "SELECT UserID, FullName, Username, Role FROM tbl_Users"
+                "SELECT UserID, FullName, Username, Role FROM tbl_Users " &
+                "WHERE (@filter = '' OR FullName LIKE @search " &
+                "OR Username LIKE @search " &
+                "OR Role LIKE @search) " &
+                "ORDER BY FullName"
 
-                If filter <> "" Then
-                    query &= " WHERE FullName LIKE '%" & filter & "%'" &
-                             " OR Username LIKE '%" & filter & "%'" &
-                             " OR Role LIKE '%" & filter & "%'"
-                End If
+                Dim cmd As New SqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@filter", filter)
+                cmd.Parameters.AddWithValue("@search", "%" & filter & "%")
 
-                query &= " ORDER BY FullName"
-
-                Dim da As New OleDbDataAdapter(query, conn)
+                Dim da As New SqlDataAdapter(cmd)
                 Dim dt As New DataTable()
                 da.Fill(dt)
 
@@ -50,19 +47,15 @@ Public Class UserForm
         End Try
     End Sub
 
-    ' ============================================================
-    '  ADD USER
-    ' ============================================================
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         If Not ValidateInputs(True) Then Return
 
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
-                ' Check duplicate username
-                Dim checkCmd As New OleDbCommand(
-                    "SELECT COUNT(*) FROM tbl_Users WHERE Username = @user", conn)
+                Dim checkCmd As New SqlCommand(
+                "SELECT COUNT(*) FROM tbl_Users WHERE Username = @user", conn)
                 checkCmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim())
                 If CInt(checkCmd.ExecuteScalar()) > 0 Then
                     MessageBox.Show("Username already exists. Please choose another.", "Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -70,16 +63,22 @@ Public Class UserForm
                     Return
                 End If
 
-                Dim cmd As New OleDbCommand(
-                    "INSERT INTO tbl_Users (FullName, Username, Password, Role) " &
-                    "VALUES (@fn, @user, @pass, @role)", conn)
+                Dim hashedPassword As String = HashPassword(txtPassword.Text.Trim())
+
+                Dim cmd As New SqlCommand(
+                "INSERT INTO tbl_Users (FullName, Username, Password, Role) " &
+                "VALUES (@fn, @user, @pass, @role)", conn)
                 cmd.Parameters.AddWithValue("@fn", txtFullName.Text.Trim())
                 cmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim())
-                cmd.Parameters.AddWithValue("@pass", txtPassword.Text.Trim())
+                cmd.Parameters.AddWithValue("@pass", hashedPassword)
                 cmd.Parameters.AddWithValue("@role", cmbRole.SelectedItem.ToString())
 
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("User added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                WriteAuditLog("ADD", "User", -1,
+                "Added user: " & txtUsername.Text.Trim() &
+                " role: " & cmbRole.SelectedItem.ToString())
                 ClearFields()
                 LoadUsers()
             End Using
@@ -88,16 +87,12 @@ Public Class UserForm
         End Try
     End Sub
 
-    ' ============================================================
-    '  UPDATE USER
-    ' ============================================================
     Private Sub BtnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         If selectedUserID = -1 Then
             MessageBox.Show("Please select a user to update.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
         End If
 
-        ' Prevent editing own account role
         If selectedUserID = CurrentUser.UserID Then
             MessageBox.Show("You cannot edit your own account here.", "Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return
@@ -106,29 +101,33 @@ Public Class UserForm
         If Not ValidateInputs(False) Then Return
 
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
-                ' Build update query
-                ' Only update password if fields are filled
                 Dim query As String
+                Dim cmd As New SqlCommand()
+                cmd.Connection = conn
+
                 If String.IsNullOrWhiteSpace(txtPassword.Text) Then
                     query = "UPDATE tbl_Users SET FullName=@fn, Username=@user, Role=@role WHERE UserID=@id"
                 Else
+                    Dim hashedPassword As String = HashPassword(txtPassword.Text.Trim())
                     query = "UPDATE tbl_Users SET FullName=@fn, Username=@user, Password=@pass, Role=@role WHERE UserID=@id"
+                    cmd.Parameters.AddWithValue("@pass", hashedPassword)
                 End If
 
-                Dim cmd As New OleDbCommand(query, conn)
+                cmd.CommandText = query
                 cmd.Parameters.AddWithValue("@fn", txtFullName.Text.Trim())
                 cmd.Parameters.AddWithValue("@user", txtUsername.Text.Trim())
-                If Not String.IsNullOrWhiteSpace(txtPassword.Text) Then
-                    cmd.Parameters.AddWithValue("@pass", txtPassword.Text.Trim())
-                End If
                 cmd.Parameters.AddWithValue("@role", cmbRole.SelectedItem.ToString())
                 cmd.Parameters.AddWithValue("@id", selectedUserID)
 
                 cmd.ExecuteNonQuery()
                 MessageBox.Show("User updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                WriteAuditLog("UPDATE", "User", selectedUserID,
+                "Updated user ID " & selectedUserID & ": " &
+                txtUsername.Text.Trim() & " role: " & cmbRole.SelectedItem.ToString())
                 ClearFields()
                 LoadUsers()
             End Using
@@ -137,9 +136,6 @@ Public Class UserForm
         End Try
     End Sub
 
-    ' ============================================================
-    '  DELETE USER
-    ' ============================================================
     Private Sub BtnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         If selectedUserID = -1 Then
             MessageBox.Show("Please select a user to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -160,14 +156,17 @@ Public Class UserForm
 
         If confirm = DialogResult.Yes Then
             Try
-                Using conn As New OleDbConnection(connStr)
+                Using conn As New SqlConnection(connStr)
                     conn.Open()
-                    Dim cmd As New OleDbCommand(
+                    Dim cmd As New SqlCommand(
                         "DELETE FROM tbl_Users WHERE UserID = @id", conn)
                     cmd.Parameters.AddWithValue("@id", selectedUserID)
                     cmd.ExecuteNonQuery()
 
                     MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    WriteAuditLog("DELETE", "User", selectedUserID,
+                    "Deleted user ID " & selectedUserID)
                     ClearFields()
                     LoadUsers()
                 End Using
@@ -177,16 +176,10 @@ Public Class UserForm
         End If
     End Sub
 
-    ' ============================================================
-    '  CLEAR BUTTON
-    ' ============================================================
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         ClearFields()
     End Sub
 
-    ' ============================================================
-    '  SEARCH
-    ' ============================================================
     Private Sub BtnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         LoadUsers(txtSearch.Text.Trim())
     End Sub
@@ -199,9 +192,6 @@ Public Class UserForm
         If txtSearch.Text.Trim() = "" Then LoadUsers()
     End Sub
 
-    ' ============================================================
-    '  DATAGRIDVIEW ROW CLICK — Populate form fields
-    ' ============================================================
     Private Sub DgvUsers_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvUsers.CellClick
         If e.RowIndex < 0 Then Return
 
@@ -222,9 +212,6 @@ Public Class UserForm
         End If
     End Sub
 
-    ' ============================================================
-    '  COLOR CODE ROWS BY ROLE
-    ' ============================================================
     Private Sub DgvUsers_RowPrePaint(sender As Object, e As DataGridViewRowPrePaintEventArgs) Handles dgvUsers.RowPrePaint
         If e.RowIndex < 0 Then Return
 
@@ -241,18 +228,12 @@ Public Class UserForm
         End If
     End Sub
 
-    ' ============================================================
-    '  SHOW PASSWORD TOGGLE
-    ' ============================================================
     Private Sub ChkShowPassword_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowPassword.CheckedChanged
         Dim ch As Char = If(chkShowPassword.Checked, Chr(0), ChrW(9679))
         txtPassword.PasswordChar = ch
         txtConfirmPassword.PasswordChar = ch
     End Sub
 
-    ' ============================================================
-    '  VALIDATE INPUTS
-    ' ============================================================
     Private Function ValidateInputs(isNew As Boolean) As Boolean
         If String.IsNullOrWhiteSpace(txtFullName.Text) Then
             MessageBox.Show("Please enter the full name.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -305,9 +286,6 @@ Public Class UserForm
         Return True
     End Function
 
-    ' ============================================================
-    '  CLEAR FIELDS
-    ' ============================================================
     Private Sub ClearFields()
         selectedUserID = -1
         txtFullName.Clear()

@@ -73,38 +73,78 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookingFrom.Designer.Designer.vb">
-      <DependentUpon>BookingFrom.Designer.vb</DependentUpon>
+    <!-- BookingForm -->
+    <Compile Include="BookingForm.vb">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BookingFrom.Designer.vb" />
-    <Compile Include="CheckInCheckOut.Designer.Designer.vb">
-      <DependentUpon>CheckInCheckOut.Designer.vb</DependentUpon>
+    <Compile Include="BookingForm.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>BookingForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="CheckInCheckOut.Designer.vb" />
+    <!-- CheckInCheckOut -->
+    <Compile Include="CheckInCheckOut.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckInCheckOut.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>CheckInCheckOut.vb</DependentUpon>
+    </Compile>
+    <!-- Dashboard -->
     <Compile Include="Dashboard.Designer.vb">
       <DependentUpon>Dashboard.vb</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dbmd.vb" />
-    <Compile Include="GuestManagement.Designer.Designer.vb">
-      <DependentUpon>GuestManagement.Designer.vb</DependentUpon>
+    <Compile Include="MDIParent1.vb">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GuestManagement.Designer.vb" />
-    <Compile Include="GuestViewForm.Designer.vb">
-      <DependentUpon>GuestViewForm.vb</DependentUpon>
+    <Compile Include="MDIParent1.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>MDIParent1.vb</DependentUpon>
     </Compile>
+    <!-- GuestManagement -->
+    <Compile Include="GuestManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuestManagement.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>GuestManagement.vb</DependentUpon>
+    </Compile>
+    <!-- GuestViewForm -->
     <Compile Include="GuestViewForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GuestViewForm.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>GuestViewForm.vb</DependentUpon>
+    </Compile>
+    <!-- Login -->
     <Compile Include="Login.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.vb">
+      <SubType>Form</SubType>
       <DependentUpon>Login.vb</DependentUpon>
+    </Compile>
+    <!-- RoomManagement -->
+    <Compile Include="RoomManagement.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RoomManagement.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>RoomManagement.vb</DependentUpon>
+    </Compile>
+    <!-- UserForm -->
+    <Compile Include="UserForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm.Designer.vb">
+      <SubType>Form</SubType>
+      <DependentUpon>UserForm.vb</DependentUpon>
+    </Compile>
+    <!-- Other -->
+    <Compile Include="dbmd.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -121,20 +161,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RoomManagement.Designer.Designer.vb">
-      <DependentUpon>RoomManagement.Designer.vb</DependentUpon>
-    </Compile>
-    <Compile Include="RoomManagement.Designer.vb" />
-    <Compile Include="UserForm.Designer.vb">
-      <DependentUpon>UserForm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="UserForm.vb">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GuestViewForm.resx">
       <DependentUpon>GuestViewForm.vb</DependentUpon>

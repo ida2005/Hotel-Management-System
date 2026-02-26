@@ -1,6 +1,9 @@
-﻿Imports System.Data.SqlClient   ' <-- changed
+﻿Imports System.Data.SqlClient
 
 Public Class LoginForm
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtUsername.Focus()
@@ -24,18 +27,20 @@ Public Class LoginForm
 
     Private Sub AuthenticateUser(username As String, password As String)
         Try
-            Using conn As New SqlConnection(connStr)   ' <-- changed
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
+                Dim hashedPassword As String = HashPassword(password)
+
                 Dim query As String =
-                    "SELECT UserID, FullName, Role FROM tbl_Users " &
-                    "WHERE Username = @user AND Password = @pass"
+                "SELECT UserID, FullName, Role FROM tbl_Users " &
+                "WHERE Username = @user AND Password = @pass"
 
-                Using cmd As New SqlCommand(query, conn)   ' <-- changed
+                Using cmd As New SqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@user", username)
-                    cmd.Parameters.AddWithValue("@pass", password)
+                    cmd.Parameters.AddWithValue("@pass", hashedPassword)
 
-                    Using reader As SqlDataReader = cmd.ExecuteReader()   ' <-- changed
+                    Using reader As SqlDataReader = cmd.ExecuteReader()
                         If reader.HasRows Then
                             reader.Read()
 
@@ -43,19 +48,19 @@ Public Class LoginForm
                             CurrentUser.FullName = reader("FullName").ToString()
                             CurrentUser.Role = reader("Role").ToString()
 
+                            ' LOG THE LOGIN
+                            WriteAuditLog("LOGIN", "Users", CurrentUser.UserID,
+                                          CurrentUser.FullName & " logged in.")
+
                             Dim dashboard As New MDIParent1()
                             dashboard.Show()
                             Me.Hide()
-                        Else
-                            ShowError("Invalid username or password.")
-                            txtPassword.Clear()
-                            txtPassword.Focus()
                         End If
                     End Using
                 End Using
             End Using
 
-        Catch ex As SqlException   ' <-- changed
+        Catch ex As SqlException
             ShowError("Database error: " & ex.Message)
         Catch ex As Exception
             ShowError("Cannot connect to database.")

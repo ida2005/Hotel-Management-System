@@ -1,31 +1,35 @@
-﻿Imports System.Data.OleDb
+﻿Imports System.Data.SqlClient
 
 Public Class GuestViewForm
+    Public Sub New()
+        InitializeComponent()
+    End Sub
 
     Private selectedGuestID As Integer = -1
     Private Sub GuestViewForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadGuests()
     End Sub
+
     Private Sub LoadGuests(Optional filter As String = "")
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
                 Dim query As String =
-                    "SELECT GuestID, FirstName & ' ' & LastName AS FullName, " &
-                    "Email, Phone, IDType, DateAdded " &
-                    "FROM tbl_Guests"
+                "SELECT GuestID, FirstName + ' ' + LastName AS FullName, " &
+                "Email, Phone, IDType, DateAdded " &
+                "FROM tbl_Guests " &
+                "WHERE (@filter = '' OR FirstName + ' ' + LastName LIKE @search " &
+                "OR Email LIKE @search " &
+                "OR Phone LIKE @search " &
+                "OR IDType LIKE @search) " &
+                "ORDER BY LastName, FirstName"
 
-                If filter <> "" Then
-                    query &= " WHERE FirstName & ' ' & LastName LIKE '%" & filter & "%'" &
-                             " OR Email LIKE '%" & filter & "%'" &
-                             " OR Phone LIKE '%" & filter & "%'" &
-                             " OR IDType LIKE '%" & filter & "%'"
-                End If
+                Dim cmd As New SqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@filter", filter)
+                cmd.Parameters.AddWithValue("@search", "%" & filter & "%")
 
-                query &= " ORDER BY LastName, FirstName"
-
-                Dim da As New OleDbDataAdapter(query, conn)
+                Dim da As New SqlDataAdapter(cmd)
                 Dim dt As New DataTable()
                 da.Fill(dt)
 
@@ -49,7 +53,7 @@ Public Class GuestViewForm
 
     Private Sub LoadBookingHistory(guestID As Integer)
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
                 Dim query As String =
@@ -60,10 +64,10 @@ Public Class GuestViewForm
                     "WHERE b.GuestID = @gid " &
                     "ORDER BY b.DateBooked DESC"
 
-                Dim cmd As New OleDbCommand(query, conn)
+                Dim cmd As New SqlCommand(query, conn)
                 cmd.Parameters.AddWithValue("@gid", guestID)
 
-                Dim da As New OleDbDataAdapter(cmd)
+                Dim da As New SqlDataAdapter(cmd)
                 Dim dt As New DataTable()
                 da.Fill(dt)
 
@@ -89,16 +93,16 @@ Public Class GuestViewForm
 
     Private Sub LoadGuestDetails(guestID As Integer)
         Try
-            Using conn As New OleDbConnection(connStr)
+            Using conn As New SqlConnection(connStr)
                 conn.Open()
 
-                Dim cmd As New OleDbCommand(
+                Dim cmd As New SqlCommand(
                     "SELECT GuestID, FirstName, LastName, Email, Phone, " &
                     "Address, IDType, IDNumber, DateAdded " &
                     "FROM tbl_Guests WHERE GuestID = @gid", conn)
                 cmd.Parameters.AddWithValue("@gid", guestID)
 
-                Using reader As OleDbDataReader = cmd.ExecuteReader()
+                Using reader As SqlDataReader = cmd.ExecuteReader()
                     If reader.HasRows Then
                         reader.Read()
                         lblGuestIDValue.Text = reader("GuestID").ToString()
@@ -117,9 +121,6 @@ Public Class GuestViewForm
         End Try
     End Sub
 
-    ' ============================================================
-    '  DATAGRIDVIEW: GUEST ROW CLICK
-    ' ============================================================
     Private Sub DgvGuests_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvGuests.CellClick
         If e.RowIndex < 0 Then Return
 
@@ -149,6 +150,7 @@ Public Class GuestViewForm
                 dgvBookingHistory.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.FromArgb(255, 220, 220)
         End Select
     End Sub
+
     Private Sub BtnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         LoadGuests(txtSearch.Text.Trim())
         ClearDetails()
@@ -167,11 +169,13 @@ Public Class GuestViewForm
             ClearDetails()
         End If
     End Sub
+
     Private Sub BtnRefresh_Click(sender As Object, e As EventArgs) Handles btnRefresh.Click
         txtSearch.Clear()
         LoadGuests()
         ClearDetails()
     End Sub
+
     Private Sub ClearDetails()
         selectedGuestID = -1
         lblGuestIDValue.Text = "-"

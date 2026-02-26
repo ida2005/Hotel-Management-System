@@ -26,6 +26,7 @@ Partial Class LoginForm
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.chkShowPassword = New System.Windows.Forms.CheckBox()
+        Me.lblError = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,7 +48,7 @@ Partial Class LoginForm
         Me.lblUsername.ForeColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.lblUsername.Location = New System.Drawing.Point(137, 122)
         Me.lblUsername.Name = "lblUsername"
-        Me.lblUsername.Size = New System.Drawing.Size(100, 21)
+        Me.lblUsername.Size = New System.Drawing.Size(80, 18)
         Me.lblUsername.TabIndex = 1
         Me.lblUsername.Text = "Username"
         '
@@ -56,7 +57,7 @@ Partial Class LoginForm
         Me.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtUsername.Location = New System.Drawing.Point(255, 114)
         Me.txtUsername.Name = "txtUsername"
-        Me.txtUsername.Size = New System.Drawing.Size(260, 29)
+        Me.txtUsername.Size = New System.Drawing.Size(260, 24)
         Me.txtUsername.TabIndex = 0
         '
         'lblPassword
@@ -66,7 +67,7 @@ Partial Class LoginForm
         Me.lblPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(60, Byte), Integer))
         Me.lblPassword.Location = New System.Drawing.Point(137, 197)
         Me.lblPassword.Name = "lblPassword"
-        Me.lblPassword.Size = New System.Drawing.Size(96, 21)
+        Me.lblPassword.Size = New System.Drawing.Size(77, 18)
         Me.lblPassword.TabIndex = 2
         Me.lblPassword.Text = "Password"
         '
@@ -76,7 +77,7 @@ Partial Class LoginForm
         Me.txtPassword.Location = New System.Drawing.Point(255, 189)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(9679)
-        Me.txtPassword.Size = New System.Drawing.Size(260, 29)
+        Me.txtPassword.Size = New System.Drawing.Size(260, 24)
         Me.txtPassword.TabIndex = 1
         '
         'btnLogin
@@ -106,17 +107,29 @@ Partial Class LoginForm
         'chkShowPassword
         '
         Me.chkShowPassword.AutoSize = True
+        Me.chkShowPassword.BackColor = System.Drawing.Color.Transparent
         Me.chkShowPassword.ForeColor = System.Drawing.Color.FromArgb(CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(90, Byte), Integer))
         Me.chkShowPassword.Location = New System.Drawing.Point(317, 255)
         Me.chkShowPassword.Name = "chkShowPassword"
-        Me.chkShowPassword.Size = New System.Drawing.Size(141, 25)
+        Me.chkShowPassword.Size = New System.Drawing.Size(118, 21)
         Me.chkShowPassword.TabIndex = 2
         Me.chkShowPassword.Text = "Show Password"
+        Me.chkShowPassword.UseVisualStyleBackColor = False
+        '
+        'lblError
+        '
+        Me.lblError.AutoSize = True
+        Me.lblError.BackColor = System.Drawing.Color.Transparent
+        Me.lblError.Location = New System.Drawing.Point(349, 225)
+        Me.lblError.Name = "lblError"
+        Me.lblError.Size = New System.Drawing.Size(0, 17)
+        Me.lblError.TabIndex = 5
         '
         'LoginForm
         '
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(732, 375)
+        Me.Controls.Add(Me.lblError)
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.lblUsername)
         Me.Controls.Add(Me.txtUsername)
@@ -146,4 +159,5 @@ Partial Class LoginForm
     Friend WithEvents btnLogin As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents chkShowPassword As CheckBox
+    Friend WithEvents lblError As Label
 End Class

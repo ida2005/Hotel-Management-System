@@ -236,16 +236,48 @@
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = False
         '
-        'pnlGrid
-        '
+        '=== PANEL: GRID ===
         Me.pnlGrid.Controls.Add(Me.lblSearch)
         Me.pnlGrid.Controls.Add(Me.txtSearch)
         Me.pnlGrid.Controls.Add(Me.btnSearch)
         Me.pnlGrid.Controls.Add(Me.dgvUsers)
-        Me.pnlGrid.Location = New System.Drawing.Point(368, 15)
+        Me.pnlGrid.Location = New System.Drawing.Point(360, 60)
         Me.pnlGrid.Name = "pnlGrid"
         Me.pnlGrid.Size = New System.Drawing.Size(680, 540)
         Me.pnlGrid.TabIndex = 2
+
+        '=== LABEL: Search ===
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Location = New System.Drawing.Point(0, 5)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Size = New System.Drawing.Size(60, 21)
+        Me.lblSearch.TabIndex = 0
+        Me.lblSearch.Text = "Search:"
+
+        '=== TEXTBOX: Search ===
+        Me.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSearch.Location = New System.Drawing.Point(60, 2)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(480, 29)
+        Me.txtSearch.TabIndex = 1
+
+        '=== BUTTON: Search ===
+        Me.btnSearch.BackColor = System.Drawing.Color.FromArgb(0, 120, 215)
+        Me.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSearch.FlatAppearance.BorderSize = 0
+        Me.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSearch.Font = New System.Drawing.Font("Segoe UI", 9.5!)
+        Me.btnSearch.ForeColor = System.Drawing.Color.White
+        Me.btnSearch.Location = New System.Drawing.Point(550, 1)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(80, 27)
+        Me.btnSearch.TabIndex = 2
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = False
+
+        '=== DATAGRIDVIEW ===
+        Me.dgvUsers.Location = New System.Drawing.Point(0, 35)
+        Me.dgvUsers.Size = New System.Drawing.Size(678, 500)
         '
         'lblSearch
         '

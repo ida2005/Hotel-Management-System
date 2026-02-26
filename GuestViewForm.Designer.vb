@@ -189,113 +189,103 @@
         Me.lblDetailsTitle.Text = "Guest Details"
         Me.lblDetailsTitle.Name = "lblDetailsTitle"
 
-        '=== DETAIL LABELS HELPER ===
-        Dim dy As Integer = 35
-        Dim dGap As Integer = 28
-        Dim lblX As Integer = 10
-        Dim valX As Integer = 110
+        ' dy starts at 35, dGap=28, lblX=10, valX=110
+        ' dy values: 35, 63, 91, 119, 147, 147+28+10=185, 213, 241, 269
 
-        '=== Guest ID ===
+        '=== Guest ID (dy=35) ===
         Me.lblGuestID.AutoSize = True
         Me.lblGuestID.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblGuestID.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblGuestID.Location = New System.Drawing.Point(10, 35)
         Me.lblGuestID.Name = "lblGuestID"
         Me.lblGuestID.Text = "Guest ID:"
 
         Me.lblGuestIDValue.AutoSize = True
-        Me.lblGuestIDValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblGuestIDValue.Location = New System.Drawing.Point(110, 35)
         Me.lblGuestIDValue.Name = "lblGuestIDValue"
         Me.lblGuestIDValue.Text = "-"
-        dy += dGap
 
-        '=== Full Name ===
+        '=== Full Name (dy=63) ===
         Me.lblFullName.AutoSize = True
         Me.lblFullName.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblFullName.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblFullName.Location = New System.Drawing.Point(10, 63)
         Me.lblFullName.Name = "lblFullName"
         Me.lblFullName.Text = "Full Name:"
 
         Me.lblFullNameValue.AutoSize = True
-        Me.lblFullNameValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblFullNameValue.Location = New System.Drawing.Point(110, 63)
         Me.lblFullNameValue.Name = "lblFullNameValue"
         Me.lblFullNameValue.Text = "-"
-        dy += dGap
 
-        '=== Email ===
+        '=== Email (dy=91) ===
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblEmail.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblEmail.Location = New System.Drawing.Point(10, 91)
         Me.lblEmail.Name = "lblEmail"
         Me.lblEmail.Text = "Email:"
 
         Me.lblEmailValue.AutoSize = True
-        Me.lblEmailValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblEmailValue.Location = New System.Drawing.Point(110, 91)
         Me.lblEmailValue.Name = "lblEmailValue"
         Me.lblEmailValue.Text = "-"
-        dy += dGap
 
-        '=== Phone ===
+        '=== Phone (dy=119) ===
         Me.lblPhone.AutoSize = True
         Me.lblPhone.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblPhone.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblPhone.Location = New System.Drawing.Point(10, 119)
         Me.lblPhone.Name = "lblPhone"
         Me.lblPhone.Text = "Phone:"
 
         Me.lblPhoneValue.AutoSize = True
-        Me.lblPhoneValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblPhoneValue.Location = New System.Drawing.Point(110, 119)
         Me.lblPhoneValue.Name = "lblPhoneValue"
         Me.lblPhoneValue.Text = "-"
-        dy += dGap
 
-        '=== Address ===
+        '=== Address (dy=147) ===
         Me.lblAddress.AutoSize = True
         Me.lblAddress.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblAddress.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblAddress.Location = New System.Drawing.Point(10, 147)
         Me.lblAddress.Name = "lblAddress"
         Me.lblAddress.Text = "Address:"
 
         Me.lblAddressValue.AutoSize = False
-        Me.lblAddressValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblAddressValue.Location = New System.Drawing.Point(110, 147)
         Me.lblAddressValue.Size = New System.Drawing.Size(300, 35)
         Me.lblAddressValue.Name = "lblAddressValue"
         Me.lblAddressValue.Text = "-"
-        dy += dGap + 10
 
-        '=== ID Type ===
+        '=== ID Type (dy=185) ===
         Me.lblIDType.AutoSize = True
         Me.lblIDType.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblIDType.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblIDType.Location = New System.Drawing.Point(10, 185)
         Me.lblIDType.Name = "lblIDType"
         Me.lblIDType.Text = "ID Type:"
 
         Me.lblIDTypeValue.AutoSize = True
-        Me.lblIDTypeValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblIDTypeValue.Location = New System.Drawing.Point(110, 185)
         Me.lblIDTypeValue.Name = "lblIDTypeValue"
         Me.lblIDTypeValue.Text = "-"
-        dy += dGap
 
-        '=== ID Number ===
+        '=== ID Number (dy=213) ===
         Me.lblIDNumber.AutoSize = True
         Me.lblIDNumber.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblIDNumber.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblIDNumber.Location = New System.Drawing.Point(10, 213)
         Me.lblIDNumber.Name = "lblIDNumber"
         Me.lblIDNumber.Text = "ID Number:"
 
         Me.lblIDNumberValue.AutoSize = True
-        Me.lblIDNumberValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblIDNumberValue.Location = New System.Drawing.Point(110, 213)
         Me.lblIDNumberValue.Name = "lblIDNumberValue"
         Me.lblIDNumberValue.Text = "-"
-        dy += dGap
 
-        '=== Date Added ===
+        '=== Date Added (dy=241) ===
         Me.lblDateAdded.AutoSize = True
         Me.lblDateAdded.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblDateAdded.Location = New System.Drawing.Point(lblX, dy)
+        Me.lblDateAdded.Location = New System.Drawing.Point(10, 241)
         Me.lblDateAdded.Name = "lblDateAdded"
         Me.lblDateAdded.Text = "Date Added:"
 
         Me.lblDateAddedValue.AutoSize = True
-        Me.lblDateAddedValue.Location = New System.Drawing.Point(valX, dy)
+        Me.lblDateAddedValue.Location = New System.Drawing.Point(110, 241)
         Me.lblDateAddedValue.Name = "lblDateAddedValue"
         Me.lblDateAddedValue.Text = "-"
 
